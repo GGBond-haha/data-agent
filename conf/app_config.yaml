@@ -1,0 +1,60 @@
+# 跟日志有关配置参数，日志框架需要配置信息
+logging:
+  # 日志文件参数
+  file:
+    enable: true          # 是否启用日志文件输出功能：true 开启，false 关闭
+    level: INFO           # 日志文件的输出级别，常用级别从低到高为 DEBUG/INFO/WARN/ERROR，仅输出大于等于该级别的日志
+    path: logs            # 日志文件存放的目录路径
+    rotation: "10 MB"     # 日志文件轮转阈值：单个日志文件达到该大小时，自动切割生成新的日志文件
+    retention: "7 days"   # 日志文件保留时长：超过该时间的历史日志文件会被自动清理
+
+  # 控制台参数
+  console:
+    enable: true          # 是否启用控制台日志输出功能：true 开启，false 关闭
+    level: INFO           # 控制台的日志输出级别
+
+
+# 元数据库连接配置（存储系统元数据、配置信息、基础字典等核心数据）
+db_meta:
+  host: 192.168.200.10    # 数据库服务的主机IP地址
+  port: 3306              # 数据库服务端口号，MySQL 默认服务端口为 3306
+  user: atguigu           # 数据库登录用户名
+  password: Atguigu.123   # 数据库登录密码
+  database: meta          # 目标数据库的库名
+
+
+# 数据仓库数据库连接配置（存储数仓分层数据、业务明细、统计结果等数据）
+db_dw:
+  host: 192.168.200.10    # 数据库服务的主机IP地址
+  port: 3306              # 数据库服务端口号，MySQL 默认服务端口为 3306
+  user: atguigu           # 数据库登录用户名
+  password: Atguigu.123   # 数据库登录密码
+  database: dw            # 目标数据库的库名
+
+
+# Qdrant 向量数据库连接配置（用于存储、检索向量嵌入数据，支持语义相似度查询）
+qdrant:
+  host: 192.168.200.10    # 向量数据库服务的主机IP地址
+  port: 6333              # 向量数据库服务端口号，Qdrant 默认 HTTP 服务端口为 6333
+  embedding_size: 1024    # 向量嵌入的维度大小，必须与嵌入模型输出的向量维度保持一致
+
+
+# 文本向量嵌入服务配置（负责将文本内容转换为向量数据）
+embedding:
+  host: 192.168.200.10    # 嵌入服务的主机IP地址
+  port: 8081              # 嵌入服务的端口号
+  model: BAAI/bge-large-zh-v1.5 # 使用的嵌入模型名称，决定向量生成的效果、语言支持和维度
+
+
+# Elasticsearch 搜索引擎配置（用于全文检索、关键词匹配、结构化查询等场景）
+es:
+  host: 192.168.200.10    # Elasticsearch 服务的主机IP地址
+  port: 9200              # Elasticsearch 服务端口号，默认 HTTP 通信端口为 9200
+  index_name: data_agent  # 业务使用的索引名称，数据写入与检索均基于该索引
+
+
+# 大语言模型服务配置（提供对话交互、逻辑推理、内容生成等AI能力）
+llm:
+  model_name: deepseek-v4-pro # 调用的大模型名称，指定具体使用的模型版本
+  api_key:  #大模型服务的 API 鉴权密钥，需填写对应平台申请的有效密钥
+
