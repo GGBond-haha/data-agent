@@ -27,7 +27,7 @@ db_meta:
 db_dw:
   host: 192.168.200.10    # 数据库服务的主机IP地址
   port: 3306              # 数据库服务端口号，MySQL 默认服务端口为 3306
-  user:            # 数据库登录用户名
+  user:             # 数据库登录用户名
   password:    # 数据库登录密码
   database: dw            # 目标数据库的库名
 
